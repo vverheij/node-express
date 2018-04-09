@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const Joi = require('joi');
+const logger = requier('logger');
+const authenticator = require('authenticator');
 
 app.use(express.json());
+app.use(logger);
+app.use(authenticator);
+app.use(express.urlencoded);
 
 const courses = [
     {
