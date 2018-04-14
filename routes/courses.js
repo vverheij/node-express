@@ -28,10 +28,10 @@ router.get('/:id', (req, res) => {
 
 // create
 router.post('/', (req, res) => {
-    console.log(req);
-    const{error} =  validateCourse(req.body);
+    //console.log(req);
+    const { error} =  validateCourse(req.body);
 
-    //if (error) return res.status(400).send(error.details[0].message);
+    if (error) return res.status(400).send(error.details[0].message);
 
     const course = {
         id: courses.length + 1,
@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
 
 // update
 router.put('/:id',(req, res) => {
-    console.log(req.params);
+    //console.log(req.params);
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) return res.status(404).send(`Course with id ${req.params.id} not found`);
 
